@@ -25,6 +25,8 @@ container: {
     borderRadius:20,
     padding:20,
     overflow:'hidden',
+    flex:1,
+    maxWidth:'50%'
 },
 title: {
     fontSize: 18,
