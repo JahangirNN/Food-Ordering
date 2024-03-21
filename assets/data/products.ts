@@ -57,7 +57,7 @@ const products = [
   },
   {
     id: 9,
-    name: 'Chicken Bacon Ranch',
+    name: 'Chicken Meat Ranch',
     image:
       'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/food/extravaganzza.png',
     price: 13.99,
