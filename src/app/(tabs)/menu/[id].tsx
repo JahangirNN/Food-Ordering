@@ -4,15 +4,22 @@ import { defaultPizzaImage } from '@components/ProductListItem';
 import { Stack, useLocalSearchParams } from 'expo-router';
 import { useState } from 'react';
 import {Image, Text, View, StyleSheet} from 'react-native';
+import { useCart } from '@providers/CartProvider';
+import { PizzaSize } from '@types';
 
-const sizes = ['S', 'M', 'L', 'XL', ];
+const sizes: PizzaSize[] = ['S', 'M', 'L', 'XL', ];
 
 const product = () => {
+  const {addItem} = useCart();
+  
   const addToCart = () => {
-    console.warn('Adding size: ', currentSize);
+    if(!product) return
+    addItem(product, currentSize)
   }
-  const [currentSize, setCurrentSize] = useState('');
+  
+  const [currentSize, setCurrentSize] = useState<PizzaSize>('M');
   const {id} = useLocalSearchParams();
+  
   const product = products.find((p)=> p.id.toString() === id);
   if (!product){
     return( 
@@ -51,8 +58,6 @@ const style = StyleSheet.create({
     backgroundColor:'white',
     flex:1,
     padding:10,
-    // maxWidth:'50%',
-    // alignSelf:'center',
   },
   price: {
     fontSize:18,
