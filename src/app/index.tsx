@@ -7,10 +7,10 @@ const index = () => {
   return (
     <View style={{ flex: 1, justifyContent: 'center', padding: 10 }}>
       <Link href={'/(user)'} asChild>
-        <Button text="User" />
+        <Button text="User " />
       </Link>
       <Link href={'/(admin)'} asChild>
-        <Button text="Admin" />
+        <Button text="Admin " />
       </Link>
     </View>
   );

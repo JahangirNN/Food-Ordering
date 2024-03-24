@@ -9,11 +9,11 @@ export default function MenuStack () {
         }}>
         <Stack.Screen name="index" options={{title:'Menu', 
           headerRight: () => (
-            <Link href="/" asChild>
+            <Link href="/(admin)/menu/create" asChild>
               <Pressable>
                 {({ pressed }) => (
                   <FontAwesome
-                    name="shopping-cart"
+                    name="plus-square-o"
                     size={25}
                     color={Colors.light.tint}
                     style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}

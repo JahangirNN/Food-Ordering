@@ -42,7 +42,7 @@ export default function TabLayout() {
           options={{
             title: 'Menu',
             headerShown: false,
-            tabBarIcon: ({ color }) => <TabBarIcon name="cutlery" color={color} />,
+            tabBarIcon: ({ color }) => <TabBarIcon name="cutlery" color={Colors.dark.tint} />,
           }}
         />
     </Tabs>
