@@ -27,21 +27,21 @@ export default function TabLayout() {
       }}>
       <Tabs.Screen name='index' options={{href:null}}/>
       <Tabs.Screen
+        name="menu"
+        options={{
+          title: 'Menu',
+          headerShown: false,
+          tabBarIcon: ({ color }) => <TabBarIcon name="cutlery" color={color} />,
+        }}
+        />
+      <Tabs.Screen
         name="two"
         options={{
-          href:null,
-          // title: 'Orders',
-          // tabBarIcon: ({ color }) => <TabBarIcon name="list" color={color} />,
+          // href:null,
+          title: 'Orders',
+          tabBarIcon: ({ color }) => <TabBarIcon name="list" color={color} />,
         }}
-      />
-        <Tabs.Screen
-          name="menu"
-          options={{
-            title: 'Menu',
-            headerShown: false,
-            tabBarIcon: ({ color }) => <TabBarIcon name="cutlery" color={color} />,
-          }}
-        />
+          />
     </Tabs>
   );
 }
