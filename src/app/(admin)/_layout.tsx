@@ -38,8 +38,10 @@ export default function TabLayout() {
         }}
       />
         <Tabs.Screen
+          
           name="menu"
           options={{
+            tabBarHideOnKeyboard: true,
             title: 'Menu',
             headerShown: false,
             tabBarIcon: ({ color }) => <TabBarIcon name="cutlery" color={Colors.dark.tint} />,
