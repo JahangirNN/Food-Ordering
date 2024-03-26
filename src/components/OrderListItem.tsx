@@ -17,7 +17,7 @@ const OrderListItem = ({order}: OrderListItemProps) => {
         <Pressable style={styles.container}>
             <View style={styles.infoContainer}>
                 <Text style={styles.title}>Order #{order.id}</Text>
-                <Text style={styles.time}>${dayjs(order.created_at).fromNow()}</Text>
+                <Text style={styles.time}>{dayjs(order.created_at).fromNow()}</Text>
             </View>
 
             <View>
