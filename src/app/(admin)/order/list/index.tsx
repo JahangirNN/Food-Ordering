@@ -1,4 +1,4 @@
-import { FlatList, Text, View } from "react-native"
+import { FlatList, View } from "react-native"
 import orders from "@assets/data/orders"
 import OrderListItem from "@components/OrderListItem"
 import { Stack } from "expo-router"
@@ -6,7 +6,7 @@ import { Stack } from "expo-router"
 const index = () => {
   return (
     <View>
-        <Stack.Screen  options={{title:'Orders ', headerTitleAlign:'center' }} />
+        <Stack.Screen  options={{title:'Active ', headerTitleAlign:'center' }} />
 
         <FlatList 
         contentContainerStyle={{gap:10, padding:10}}

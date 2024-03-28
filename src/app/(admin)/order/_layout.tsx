@@ -11,13 +11,14 @@ export default function orderLayout() {
         }}}>
 
       <Tabs.Screen
-        name="index"
+        name="list"
         options={{
           href:null,
           title:'Order ',
-          headerTitleAlign:'center',
-          tabBarShowLabel:false,
-        //   title: 'Orders ',
+          headerShown:false,
+          // headerTitleAlign:'center',
+          // tabBarShowLabel:false,
+          // title: 'Orders ',
         //   tabBarIcon: ({ color }) => <TabBarIcon name="list" color={color} />,
         }}
           />
