@@ -26,10 +26,10 @@ const order = () => {
         <View>
         <Stack.Screen options={{title, headerTitleAlign:'center',  
             headerLeft: () => (
-            <Link href="/order" asChild>
+            <Link href="/(admin)/order/list" asChild>
                 <Pressable>
                 {({ pressed }) => (
-                    <Text style={{color:Colors.light.tint, fontSize:20, padding:10}}>order </Text>
+                    <Text style={{color:Colors.light.tint, fontSize:20, padding:10}}>orders </Text>
                 )}
                 </Pressable>
             </Link>
