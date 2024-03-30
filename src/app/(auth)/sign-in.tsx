@@ -1,22 +1,39 @@
-import { View, Text, TextInput, StyleSheet, Pressable } from 'react-native';
+import { View, Text, TextInput, StyleSheet, Pressable, Alert } from 'react-native';
 import React, { useState } from 'react';
 import Button from '../../components/Button';
 import Colors from '../../constants/Colors';
-import { Link, Stack } from 'expo-router';
+import { Link, Redirect, Stack} from 'expo-router';
 import { FontAwesome } from '@expo/vector-icons';
+import { supabase } from '@lib/supabase';
 
-const SignUpScreen = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
+const SignInScreen = () => {
+  const [email, setEmail] = useState('hi@gmail.com');
+  const [password, setPassword] = useState('hi@gmail.com');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(true);
+  
+  async function signInWithEmail() {
+    setLoading(true);
+    const { error } = await supabase.auth.signInWithPassword({
+      email: email,
+      password: password,
+    });
+  
+    setLoading(false);
+    if (error !== null) {
+      console.warn(error.message);
+    }
+    setError(false);
+  }
   return (
+    
     <View style={styles.container}>
-      <Stack.Screen options={{ title:'Sign In',headerRight: () => (
+      <Stack.Screen options={{ title:'Sign In',headerBackVisible:false,headerRight: () => (
             <Link href="/(auth)/sign-up" asChild>
               <Pressable>
                 {({ pressed }) => (
                   <FontAwesome
-                    name="sign-in"
+                    name="backward"
                     size={25}
                     color={Colors.light.tint}
                     style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
@@ -44,9 +61,9 @@ const SignUpScreen = () => {
         secureTextEntry
       />
 
-      <Button text="Create account " />
+      <Button disabled={loading} onPress={signInWithEmail} text={!loading? "Sign In ":"loading... "} />
       <Link href="/(auth)/sign-up" style={styles.textButton}>
-        Sign in </Link>
+        Create an Account </Link>
     </View>
   );
 };
@@ -77,4 +94,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SignUpScreen;
+export default SignInScreen;

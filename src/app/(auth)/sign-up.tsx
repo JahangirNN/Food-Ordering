@@ -4,14 +4,27 @@ import Button from '../../components/Button';
 import Colors from '../../constants/Colors';
 import { Link, Stack, useRouter } from 'expo-router';
 import { FontAwesome } from '@expo/vector-icons';
+import { supabase } from '@lib/supabase';
 
-const SignInScreen = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+const SignUpScreen = () => {
+  const [email, setEmail] = useState('hi@gmail.com');
+  const [password, setPassword] = useState('hi@gmail.com');
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
+
+  async function signUpWithEmail() {
+    setLoading(true);
+    const { error } = await supabase.auth.signUp({
+      email: email,
+      password: password,
+    });
+  
+    if (error) console.warn(error.message);
+    setLoading(false);
+  }
   return (
     <View style={styles.container}>
-      <Stack.Screen options={{ title:'Sign Up',headerRight: () => (
+      <Stack.Screen options={{ title:'Sign Up',headerBackVisible:false, headerRight: () => (
             <Link href="/(auth)/sign-in" asChild>
               <Pressable>
                 {({ pressed }) => (
@@ -45,10 +58,10 @@ const SignInScreen = () => {
         secureTextEntry
       />
 
-      <Button text="Sign in " />
+<Button disabled={loading} onPress={signUpWithEmail} text={!loading? "Create account ":"loading... "} />
       <Pressable onPress={router.back}>
         <Text style={styles.textButton}>
-        Create an account </Text>
+        Sign in </Text>
       </Pressable>
     </View>
   );
@@ -80,4 +93,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SignInScreen;
+export default SignUpScreen;
